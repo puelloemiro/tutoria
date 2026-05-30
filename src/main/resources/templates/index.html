@@ -19,12 +19,18 @@
             <th>CLAVE</th>
             <th>NOMBRE</th>
             <th>EMAIL</th>
+            <th>ACCIONES</th>
         </tr>
         <tr th:each="u: ${usuarios}">
             <td th:text="${u.cedula}"></td>
             <td th:text="${u.clave}"></td>
             <td th:text="${u.nombre}"></td>
             <td th:text="${u.email}"></td>
+            <td>
+                <a th:href="@{/editar/} + ${u.cedula}">Editar</a> |
+                <a th:href="@{/eliminar/} + ${u.cedula}"
+                   onclick="return confirm('¿Seguro que deseas eliminar este usuario?');">Eliminar</a>
+            </td>
         </tr>
     </table>
 </div>

@@ -36,4 +36,18 @@ public class ControladorInicio {
         log.info("Usuario guardado con éxito");
         return "redirect:/";
     }
+
+    @GetMapping("/editar/{cedula}")
+    public String editar(Usuario usuario, Model modelo) {
+        usuario = userServicio.localizarUsuario(usuario);
+        modelo.addAttribute("usuario", usuario);
+        return "modificar";
+    }
+
+    @GetMapping("/eliminar/{cedula}")
+    public String eliminar(Usuario usuario) {
+        userServicio.eliminar(usuario);
+        log.info("Usuario eliminado correctamente");
+        return "redirect:/";
+    }
 }

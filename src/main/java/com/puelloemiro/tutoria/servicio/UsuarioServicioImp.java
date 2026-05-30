@@ -22,6 +22,18 @@ public class UsuarioServicioImp implements IUsuarioServicio {
     @Override
     @Transactional
     public void guardar(Usuario usuario) {
-        crudUsuario.save(usuario); // El método save() lo provee CrudRepository automáticamente
+        crudUsuario.save(usuario);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Usuario localizarUsuario(Usuario usuario) {
+        return crudUsuario.findById(usuario.getCedula()).orElse(null);
+    }
+
+    @Override
+    @Transactional
+    public void eliminar(Usuario usuario) {
+        crudUsuario.delete(usuario);    
     }
 }

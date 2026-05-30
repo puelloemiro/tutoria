@@ -7,4 +7,6 @@ public interface IUsuarioServicio {
 
     public List<Usuario> listarUsuarios();
     public void guardar(Usuario usuario);
+    public Usuario localizarUsuario(Usuario usuario);
+    public void eliminar(Usuario usuario);
 }
