@@ -1,42 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Intercambio de Listas</title>
+    <title>EJEMPLO DE CRUD MVC CON SPRING BOOT</title>
     <meta charset="UTF-8">
 </head>
 <body>
 <h2>PÁGINA DE INICIO</h2>
-<p th:text="${mensaje}"></p>
-<p th:text="${dato}"></p>
 
-<hr>
+<a th:href="@{/agregar}">AGREGAR USUARIO</a>
+
 <h4>LISTA DE PERSONAS</h4>
 <hr>
 
 <div th:if="${usuarios != null and !usuarios.empty}">
-    <table border="1" cellpadding="5">
-        <thead>
+    <table border="1">
         <tr>
             <th>CÉDULA</th>
             <th>CLAVE</th>
             <th>NOMBRE</th>
             <th>EMAIL</th>
         </tr>
-        </thead>
-        <tbody>
-        <tr th:each="u : ${usuarios}">
+        <tr th:each="u: ${usuarios}">
             <td th:text="${u.cedula}"></td>
             <td th:text="${u.clave}"></td>
             <td th:text="${u.nombre}"></td>
             <td th:text="${u.email}"></td>
         </tr>
-        </tbody>
     </table>
 </div>
 
 <div th:if="${usuarios == null or usuarios.empty}">
-    <p>No existen usuarios registrados en la lista.</p>
+    <p>La lista de usuarios está vacía.</p>
 </div>
-
 </body>
 </html>
