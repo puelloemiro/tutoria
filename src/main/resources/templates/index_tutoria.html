@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listado de Tutorías</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h2>PANEL DE GESTIÓN DE TUTORÍAS</h2>
+<a th:href="@{/tutorias/agregar}">REGISTRAR NUEVA TUTORÍA</a> | <a th:href="@{/}">IR A USUARIOS</a>
+<hr>
+
+<div th:if="${tutorias != null and !tutorias.empty}">
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>ID</th>
+            <th>Fecha Reg.</th>
+            <th>Fecha Prog.</th>
+            <th>Horario</th>
+            <th>Docente</th>
+            <th>Estudiante</th>
+            <th>Universidad / Carrera</th>
+            <th>Asignatura (Temática)</th>
+            <th>Modalidad</th>
+            <th>Lugar</th>
+            <th>Compromisos</th>
+            <th>Acciones</th>
+        </tr>
+        <tr th:each="t : ${tutorias}">
+            <td th:text="${t.id}"></td>
+            <td th:text="${t.fecha}"></td>
+            <td th:text="${t.fechaProgramada}"></td>
+            <td th:text="${t.horaInicio} + ' a ' + ${t.horaFin}"></td>
+            <td th:text="${t.docente}"></td>
+            <td th:text="${t.estudiante}"></td>
+            <td th:text="${t.universidad} + ' - ' + ${t.carrera}"></td>
+            <td th:text="${t.asignatura} + ' (' + ${t.tematica} + ')'"></td>
+            <td th:text="${t.esGrupalOIndividual}"></td>
+            <td th:text="${t.lugar}"></td>
+            <td th:text="${t.compromisos}"></td>
+            <td>
+                <a th:href="@{/tutorias/editar/} + ${t.id}">Editar</a> |
+                <a th:href="@{/tutorias/eliminar/} + ${t.id}"
+                   onclick="return confirm('¿Seguro que deseas eliminar esta tutoría?');">Eliminar</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div th:if="${tutorias == null or tutorias.empty}">
+    <p>No hay tutorías registradas actualmente.</p>
+</div>
+</body>
+</html>

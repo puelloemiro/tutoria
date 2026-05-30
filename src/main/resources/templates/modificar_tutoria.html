@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario de Tutoría</title>
+    <meta charset="UTF-8">
+    <style>.error { color: red; font-size: 0.9em; font-weight: bold; }</style>
+</head>
+<body>
+<h2>DATOS DE LA TUTORÍA</h2>
+<a th:href="@{/tutorias}">CANCELAR Y REGRESAR</a>
+<br/><br/>
+
+<form th:action="@{/tutorias/guardar}" th:object="${tutoria}" method="POST">
+    <input type="hidden" th:field="*{id}" />
+
+    <label>Fecha de Registro:</label><br/>
+    <input type="date" th:field="*{fecha}" />
+    <span class="error" th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></span>
+    <br/><br/>
+
+    <label>Fecha Programada para la Tutoría:</label><br/>
+    <input type="date" th:field="*{fechaProgramada}" />
+    <span class="error" th:if="${#fields.hasErrors('fechaProgramada')}" th:errors="*{fechaProgramada}"></span>
+    <br/><br/>
+
+    <label>Hora Inicio:</label>
+    <input type="time" th:field="*{horaInicio}" />
+    <span class="error" th:if="${#fields.hasErrors('horaInicio')}" th:errors="*{horaInicio}"></span>
+
+    <label>Hora Fin:</label>
+    <input type="time" th:field="*{horaFin}" />
+    <span class="error" th:if="${#fields.hasErrors('horaFin')}" th:errors="*{horaFin}"></span>
+    <br/><br/>
+
+    <label>Nombre del Docente:</label><br/>
+    <input type="text" th:field="*{docente}" />
+    <span class="error" th:if="${#fields.hasErrors('docente')}" th:errors="*{docente}"></span>
+    <br/><br/>
+
+    <label>Nombre del Estudiante:</label><br/>
+    <input type="text" th:field="*{estudiante}" />
+    <span class="error" th:if="${#fields.hasErrors('estudiante')}" th:errors="*{estudiante}"></span>
+    <br/><br/>
+
+    <label>Universidad:</label><br/>
+    <input type="text" th:field="*{universidad}" />
+    <span class="error" th:if="${#fields.hasErrors('universidad')}" th:errors="*{universidad}"></span>
+    <br/><br/>
+
+    <label>Carrera:</label><br/>
+    <input type="text" th:field="*{carrera}" />
+    <span class="error" th:if="${#fields.hasErrors('carrera')}" th:errors="*{carrera}"></span>
+    <br/><br/>
+
+    <label>Asignatura:</label><br/>
+    <input type="text" th:field="*{asignatura}" />
+    <span class="error" th:if="${#fields.hasErrors('asignatura')}" th:errors="*{asignatura}"></span>
+    <br/><br/>
+
+    <label>Temática Específica:</label><br/>
+    <input type="text" th:field="*{tematica}" />
+    <span class="error" th:if="${#fields.hasErrors('tematica')}" th:errors="*{tematica}"></span>
+    <br/><br/>
+
+    <label>Tipo de Tutoría:</label><br/>
+    <select th:field="*{esGrupalOIndividual}">
+        <option value="">-- Seleccione --</option>
+        <option value="Individual">Individual</option>
+        <option value="Grupal">Grupal</option>
+    </select>
+    <span class="error" th:if="${#fields.hasErrors('esGrupalOIndividual')}" th:errors="*{esGrupalOIndividual}"></span>
+    <br/><br/>
+
+    <label>Lugar / Plataforma:</label><br/>
+    <input type="text" th:field="*{lugar}" placeholder="Ej: Salón 302 o Teams" />
+    <span class="error" th:if="${#fields.hasErrors('lugar')}" th:errors="*{lugar}"></span>
+    <br/><br/>
+
+    <label>Compromisos establecidos (Opcional):</label><br/>
+    <textarea th:field="*{compromisos}" rows="3" cols="40"></textarea>
+    <br/><br/>
+
+    <input type="submit" value="GUARDAR TUTORÍA" />
+</form>
+</body>
+</html>

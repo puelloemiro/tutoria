@@ -5,12 +5,18 @@
     <meta charset="UTF-8">
 </head>
 <body>
-<h2>PÁGINA DE INICIO</h2>
+<h2>PÁGINA DE INICIO - GESTIÓN DE USUARIOS</h2>
+
+<nav>
+    <strong>MÓDULOS:</strong>
+    <a th:href="@{/}">[ Gestionar Usuarios ]</a> |
+    <a th:href="@{/tutorias}">[ Gestionar Tutorías ]</a>
+</nav>
+<hr>
 
 <a th:href="@{/agregar}">AGREGAR USUARIO</a>
 
 <h4>LISTA DE PERSONAS</h4>
-<hr>
 
 <div th:if="${usuarios != null and !usuarios.empty}">
     <table border="1">
