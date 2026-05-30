@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Página de Inicio</title>
+    <title>Intercambio de Datos</title>
     <meta charset="UTF-8">
 </head>
 <body>
-<h1>PÁGINA DE INICIO</h1>
-<p>¡Bienvenidos a nuestra aplicación Web usando el patrón MVC con Spring Boot!</p>
+<h2>PÁGINA DE INICIO</h2>
+
+<p th:text="${mensaje}">Aquí va el mensaje del controlador</p>
+<p th:text="${dato}">Aquí va el mensaje del archivo properties</p>
+
 </body>
 </html>
